@@ -1,4 +1,5 @@
 import sys
+
 input = sys.stdin.readline
 
 from collections import deque
@@ -11,22 +12,14 @@ for _ in range(int(input())):
         stack.append(int(command[1]))
         continue
     if command[0] == 'pop':
-        try:
-            print(stack.pop())
-        except:
-            print(-1)
-        finally:
-            continue
+        print(stack.pop() if stack else -1)
+        continue
     if command[0] == 'size':
         print(len(stack))
         continue
     if command[0] == 'empty':
-        print(1 if len(stack) == 0 else 0)
+        print(0 if stack else 1)
         continue
     if command[0] == 'top':
-        try:
-            print(stack[-1])
-        except:
-            print(-1)
-        finally:
-            continue
+        print(stack[-1] if stack else -1)
+        continue
