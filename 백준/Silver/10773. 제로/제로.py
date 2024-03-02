@@ -1,10 +1,16 @@
-nums = []
+import sys
+from collections import deque
 
-for _ in range(int(input())):
-    num = int(input())
-    if num == 0:
-        nums.pop()
-        continue
-    nums.append(num)
+input = sys.stdin.readline
 
-print(sum(nums))
+K = int(input())
+moneys = deque()
+
+for _ in range(K):
+    command = int(input())
+    if command == 0:
+        moneys.pop()
+    else:
+        moneys.append(command)
+
+print(sum(moneys))
