@@ -2,17 +2,17 @@ import sys
 
 input = sys.stdin.readline
 
-n = int(input())
-A = list(map(int, input().split()))
-ans = [0] * n
-my_stack = []
+N = int(input())
+nums = list(map(int, input().split()))
+result = [0] * N
+mystack = []
 
-for i in range(n):
-    while my_stack and A[my_stack[-1]] < A[i]:
-        ans[my_stack.pop()] = A[i]
-    my_stack.append(i)
+for i in range(N):
+    while mystack and nums[i] > nums[mystack[-1]]:
+        result[mystack.pop()] = nums[i]
+    mystack.append(i)
 
-while my_stack:
-    ans[my_stack.pop()] = -1
+while mystack:
+    result[mystack.pop()] = -1
 
-print(*ans)
+print(*result)
