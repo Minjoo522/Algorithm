@@ -2,20 +2,22 @@ import sys
 
 input = sys.stdin.readline
 
-lower_rb = 'roygbiv'
-upper_rb = 'ROYGBIV'
+lower_rb = set('roygbiv')
+upper_rb = set('ROYGBIV')
 
 N = int(input())
 word = input().rstrip()
 
-lower = ''.join([char for char in lower_rb if char in word])
-upper = ''.join([char for char in upper_rb if char in word])
+word_set = set(word)
 
-if lower == lower_rb and upper == upper_rb:
+has_lower = lower_rb.issubset(word_set)
+has_upper = upper_rb.issubset(word_set)
+
+if has_lower and has_upper:
     print('YeS')
-elif lower == lower_rb and upper != upper_rb:
+elif has_lower:
     print('yes')
-elif lower != lower_rb and upper == upper_rb:
+elif has_upper:
     print('YES')
 else:
     print('NO!')
