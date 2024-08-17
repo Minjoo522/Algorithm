@@ -11,4 +11,4 @@ for i in range(0, len(partitions) - 1):
     for j in range(i + 1, len(partitions)):
         sizes.add(partitions[j] - partitions[i])
 
-print(*sorted(list(sizes)))
+print(*sorted(sizes))
