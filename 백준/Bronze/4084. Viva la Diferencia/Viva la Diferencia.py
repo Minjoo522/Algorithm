@@ -3,20 +3,14 @@ import sys
 input = sys.stdin.readline
 
 while True:
-    a, b, c, d = map(int, input().split())
-    if a == 0 and b == 0 and c == 0 and d == 0:
+    nums = list(map(int, input().split()))
+    if all(num == 0 for num in nums):
         break
 
     result = 0
-    while len({a, b, c, d}) != 1:
-        na = abs(a - b)
-        nb = abs(b - c)
-        nc = abs(c - d)
-        nd = abs(d - a)
-        a = na
-        b = nb
-        c = nc
-        d = nd
+    while len(set(nums)) != 1:
+        nums = [abs(nums[i] - nums[i - 1]) for i in range(4)]
         result += 1
 
     print(result)
+   
