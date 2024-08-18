@@ -3,15 +3,9 @@ import sys
 input = sys.stdin.readline
 
 S = input().rstrip()
-nums = '1234567890'
-sentences = ''
-
-for char in S:
-    if char not in nums:
-        sentences += char
-
 keyword = input().rstrip()
-if keyword in sentences:
-    print(1)
-else:
-    print(0)
+
+for i in range(10):
+    S = S.replace(str(i), '')
+    
+print(1 if keyword in S else 0)
