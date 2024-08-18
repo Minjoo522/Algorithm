@@ -4,4 +4,4 @@ input = sys.stdin.readline
 
 x, y, w, h = map(int, input().split())
 
-print(min(w - x, h - y, x - 0, y - 0))
+print(min(w - x, h - y, x, y))
