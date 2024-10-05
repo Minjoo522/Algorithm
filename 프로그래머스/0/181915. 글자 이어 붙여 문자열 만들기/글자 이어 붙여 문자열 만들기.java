@@ -1,0 +1,13 @@
+import java.lang.*;
+
+class Solution {
+    public String solution(String my_string, int[] index_list) {
+        StringBuilder sb = new StringBuilder();
+        String[] strs = my_string.split("");
+        
+        for (int idx: index_list) {
+            sb.append(strs[idx]);
+        }
+        return sb.toString();
+    }
+}
