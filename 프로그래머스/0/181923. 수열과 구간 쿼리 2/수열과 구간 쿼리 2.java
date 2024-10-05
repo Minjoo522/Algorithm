@@ -3,18 +3,15 @@ class Solution {
         int[] answer = new int[queries.length];
         
         for (int i = 0; i < queries.length; i++) {
-            int current = 987654321;
-            int s = queries[i][0];
-            int e = queries[i][1];
-            int k = queries[i][2];
+            int min = Integer.MAX_VALUE;
+            int s = queries[i][0], e = queries[i][1], k = queries[i][2];
             
             for (int j = s; j <= e; j++) {
-                int num = arr[j];
-                if (num > k && num < current) {
-                    current = num;
+                if (arr[j] > k) {
+                    min = Math.min(arr[j], min);
                 }
             }
-            answer[i] = current == 987654321 ? -1 : current;
+            answer[i] = min == Integer.MAX_VALUE ? -1 : min;
         }
         return answer;
     }
