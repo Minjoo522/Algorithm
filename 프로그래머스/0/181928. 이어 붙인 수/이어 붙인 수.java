@@ -1,16 +1,17 @@
-import java.lang.StringBuilder;
-
 class Solution {
     public int solution(int[] num_list) {
-        StringBuilder sb_odd = new StringBuilder();
-        StringBuilder sb_even = new StringBuilder();
+        int even = 0;
+        int odd = 0;
+        
         for (int num: num_list) {
             if (num % 2 == 0) {
-                sb_even.append(num);
+                even *= 10;
+                even += num;
             } else {
-                sb_odd.append(num);
+                odd *= 10;
+                odd += num;
             }
         }
-        return Integer.parseInt(sb_odd.toString()) + Integer.parseInt(sb_even.toString());
+        return even + odd;
     }
 }
