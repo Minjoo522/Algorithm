@@ -3,26 +3,14 @@ import java.util.*;
 class Solution {
     public int[] solution(int l, int r) {
         List<Integer> result = new ArrayList<>();
-        for (int i = l; i <= r; i++) {
-            String num = String.valueOf(i);
-            boolean notZeroOrFive = false;
-            for (char n: num.toCharArray()) {
-                if (n != '5' && n != '0') notZeroOrFive = true;
-            }
-            if (notZeroOrFive) {
-                continue;
-            }
-            result.add(i);
-        }
         
-        if (result.size() == 0) {
-            return new int[]{-1};
+        for (int i = 1; i < 64; i++) { // 2의 6승
+            int num = Integer.parseInt(Integer.toBinaryString(i)) * 5;
+            // 이진수(Binary) 문자열로 변환 후 5 곱해서 1을 5로 만들기
+            if (l <= num && num <= r) {
+                result.add(num);
+            }
         }
-        
-        int[] array = new int[result.size()];
-        for (int i = 0; i < result.size(); i++) {
-            array[i] = result.get(i);
-        }
-        return array;
+        return result.isEmpty() ? new int[]{-1} : result.stream().mapToInt(i -> i).toArray();
     }
 }
