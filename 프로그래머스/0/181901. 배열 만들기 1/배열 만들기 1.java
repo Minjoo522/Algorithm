@@ -2,10 +2,13 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int n, int k) {
-        List<Integer> result = new ArrayList<>();
-        for (int i = k; i <= n; i += k) {
-            result.add(i);
+        int count = n / k;
+        
+        int[] result = new int[count];
+        
+        for (int i = 1; i <= count; i++) {
+            result[i - 1] = i * k;
         }
-        return result.stream().mapToInt(i -> i).toArray();
+        return result;
     }
 }
