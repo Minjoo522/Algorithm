@@ -1,23 +1,13 @@
 class Solution {
     public int solution(int[] num_list) {
-        if (num_list.length >= 11) {
-            return sum(num_list);
-        }
-        return prod(num_list);
-    }
-    
-    private static int sum(int[] arr) {
-        int result = 0;
-        for (int num: arr) {
-            result += num;
-        }
-        return result;
-    }
-    
-    private static int prod(int[] arr) {
-        int result = 1;
-        for (int num: arr) {
-            result *= num;
+        int result = num_list.length >= 11 ? 0 : 1;
+        
+        for (int i = 0; i < num_list.length; i++) {
+            if (num_list.length >= 11) {
+                result += num_list[i];
+            } else {
+                result *= num_list[i];
+            }
         }
         return result;
     }
