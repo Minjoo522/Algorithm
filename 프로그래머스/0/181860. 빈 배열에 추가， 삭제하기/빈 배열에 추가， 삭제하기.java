@@ -6,7 +6,7 @@ class Solution {
         
         for (int i = 0; i < arr.length; i++) {
             if (flag[i]) {
-                for (int j = 1; j <= arr[i] * 2; j++) {
+                for (int j = 0; j < arr[i] * 2; j++) {
                     result.add(arr[i]);
                 }
             } else {
