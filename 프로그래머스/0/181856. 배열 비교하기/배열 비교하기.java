@@ -11,9 +11,6 @@ class Solution {
             arr2Sum += arr2[i];
         }
         
-        if (arr1Sum == arr2Sum) {
-            return 0;
-        }
-        return arr1Sum > arr2Sum ? 1 : -1;
+        return arr1Sum == arr2Sum ? 0 : (arr1Sum > arr2Sum ? 1 : -1);
     }
 }
