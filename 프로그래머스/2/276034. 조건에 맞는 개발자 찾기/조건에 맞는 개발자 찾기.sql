@@ -1,0 +1,15 @@
+SELECT
+    ID,
+    EMAIL,
+    FIRST_NAME,
+    LAST_NAME
+FROM DEVELOPERS
+WHERE 
+    ID IN (
+        SELECT DISTINCT d.ID
+        FROM DEVELOPERS d
+        JOIN SKILLCODES s
+        ON d.SKILL_CODE & S.CODE = S.CODE
+        WHERE s.NAME = 'C#' OR s.NAME = 'Python'
+    )
+ORDER BY ID;
