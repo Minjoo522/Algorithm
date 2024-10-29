@@ -1,0 +1,13 @@
+SELECT
+    d.ID,
+    COUNT(c.ID) AS CHILD_COUNT
+FROM 
+    ECOLI_DATA d
+LEFT JOIN
+    ECOLI_DATA c
+ON
+    d.ID = c.PARENT_ID
+GROUP BY
+    d.ID
+ORDER BY
+    d.ID ASC;
