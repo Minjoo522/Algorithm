@@ -1,0 +1,11 @@
+SELECT
+    COUNT(*) AS FISH_COUNT
+FROM
+    FISH_INFO i
+WHERE
+    EXISTS (
+        SELECT 1
+        FROM FISH_NAME_INFO n
+        WHERE i.FISH_TYPE = n.FISH_TYPE
+        AND n.FISH_NAME IN ('BASS', 'SNAPPER')
+    )
