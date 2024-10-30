@@ -4,6 +4,9 @@ class Solution {
     public int[][] solution(int[][] arr) {
         int x = arr[0].length;
         int y = arr.length;
+        
+        if (x == y) return arr;
+        
         int n = x > y ? x : y;
         
         int[][] answer = new int[n][n];
