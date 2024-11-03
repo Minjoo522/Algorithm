@@ -1,33 +1,24 @@
 import java.io.*;
 
 public class Main {
-    private static int[][] memo = new int[41][2];
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int t = Integer.parseInt(br.readLine());
-        memo[0] = new int[]{1, 0};
-        memo[1] = new int[]{0, 1};
+
+        int[][] dp = new int[41][2];
+
+        dp[0] = new int[]{1, 0};
+        dp[1] = new int[]{0, 1};
+
+        for (int i = 2; i <= 40; i++) {
+            dp[i][0] = dp[i - 1][0] + dp[i - 2][0];
+            dp[i][1] = dp[i - 1][1] + dp[i - 2][1];
+        }
 
         for (int i = 0; i < t; i++) {
             int n = Integer.parseInt(br.readLine());
-            int[] result = dfs(n);
-            System.out.println(result[0] + " " + result[1]);
+            System.out.println(dp[n][0] + " " + dp[n][1]);
         }
-    }
-
-    private static int[] dfs(int n) {
-        if (memo[n][0] != 0 || memo[n][1] != 0) {
-            return memo[n];
-        }
-
-        int[] left = dfs(n - 1);
-        int[] right = dfs(n - 2);
-
-        memo[n][0] = left[0] + right[0];
-        memo[n][1] = left[1] + right[1];
-
-        return memo[n];
     }
 }
