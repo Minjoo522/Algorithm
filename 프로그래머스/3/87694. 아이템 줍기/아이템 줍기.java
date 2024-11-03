@@ -2,29 +2,29 @@ import java.util.*;
 
 class Solution {
     private static final int SIZE = 101;
-    private static final int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    private static final int[][] directions = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
     
     public int solution(int[][] rectangle, int characterX, int characterY, int itemX, int itemY) {
         boolean[][] map = new boolean[SIZE * 2][SIZE * 2];
         
-        for (int[] rec : rectangle) {
-            int x1 = rec[0] * 2, y1 = rec[1] * 2;
-            int x2 = rec[2] * 2, y2 = rec[3] * 2;
+        for (int[] rect : rectangle) {
+            int x1 = rect[0] * 2, y1 = rect[1] * 2;
+            int x2 = rect[2] * 2, y2 = rect[3] * 2;
             
-            for (int i = x1; i <= x2; i++) { // 가로
+            for (int i = x1; i <= x2; i++) {
                 map[i][y1] = true;
                 map[i][y2] = true;
             }
             
-            for (int i = y1; i <= y2; i++) { // 세로
+            for (int i = y1; i <= y2; i++) {
                 map[x1][i] = true;
                 map[x2][i] = true;
             }
         }
         
-        for (int[] rec : rectangle) {
-            int x1 = rec[0] * 2 + 1, y1 = rec[1] * 2 + 1;
-            int x2 = rec[2] * 2 - 1, y2 = rec[3] * 2 - 1;
+        for (int[] rect : rectangle) {
+            int x1 = rect[0] * 2 + 1, y1 = rect[1] * 2 + 1;
+            int x2 = rect[2] * 2 - 1, y2 = rect[3] * 2 - 1;
             
             for (int i = x1; i <= x2; i++) {
                 for (int j = y1; j <= y2; j++) {
@@ -44,7 +44,7 @@ class Solution {
         q.add(new int[]{startX, startY, 0});
         visited[startX][startY] = true;
         
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int[] current = q.poll();
             int x = current[0];
             int y = current[1];
@@ -54,7 +54,7 @@ class Solution {
                 return distance / 2;
             }
             
-            for (int[] direction: directions) {
+            for (int[] direction : directions) {
                 int nx = x + direction[0];
                 int ny = y + direction[1];
                 
@@ -64,6 +64,7 @@ class Solution {
                 }
             }
         }
+        
         return 0;
     }
 }
