@@ -1,16 +1,10 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	var a int
-	var b int
+	var a, b int
 
-	_, err := fmt.Scan(&a, &b)
-	if err != nil {
-		return
-	}
+	fmt.Scanln(&a, &b)
 	fmt.Println(a + b)
 }
